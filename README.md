@@ -80,7 +80,17 @@ vclone_venv/bin/python Applio/core.py prerequisites --models True --pretraineds_
 
 > Requires an NVIDIA GPU with CUDA 12.x drivers. On Linux you may also need `sudo apt-get install portaudio19-dev` (a `pyaudio` build dependency pulled in by Applio).
 
-Place a training recording at `voice_training.wav` (5+ minutes recommended, single speaker, clean audio).
+### 4. Prepare the Training Dataset (`voice_training.wav`)
+
+To train a high-quality RVC model, you need a single, clean audio recording of the target voice (at least 5 to 10 minutes of continuous speech is recommended). 
+
+You can generate this dataset by reading and recording the balanced sentences listed in [training_sentences.md](training_sentences.md):
+
+1. **Environment**: Record in a quiet room with minimal background noise and echo.
+2. **Recording**: Read the sentences at a natural, conversational pace. Try to capture a natural range of emotions, questions, and emphasis.
+3. **Exporting**: Save or export the complete recorded audio as `voice_training.wav` directly in the root of this project folder.
+   - *Technical Specification*: Export as mono, 16-bit or 24-bit PCM WAV at 44.1 kHz or 48 kHz. The preprocessing notebook will automatically handle downmixing, volume normalization, and resampling to 40 kHz.
+
 
 ## Usage
 
